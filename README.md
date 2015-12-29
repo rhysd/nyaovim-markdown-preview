@@ -4,6 +4,8 @@ Live Markdown Preview in [NyaoVim](https://github.com/rhysd/NyaoVim)
 This is a UI plugin to provide live markdown preview UI for [NyaoVim](https://github.com/rhysd/NyaoVim).
 Preview is automatically opened/closed on `markdown` filetype and updated in real-time.  [marked](https://github.com/chjj/marked) converts current buffer to HTML and [highlight.js](https://github.com/isagalaev/highlight.js/) adds syntax highlight to code block.
 
+![screenshot](https://raw.githubusercontent.com/rhysd/ss/master/nyaovim-markdown-preview/main.gif)
+
 ## Installation
 
 At first, install this repository as normal Neovim plugin with your favorite plugin manager.
