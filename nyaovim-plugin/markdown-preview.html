@@ -41,12 +41,14 @@ marked.setOptions({
   }
 });
 
+const ThisWindow = require('electron').remote.getCurrentWindow();
+
 Polymer({
   is: 'markdown-preview',
 
   properties: {
-    width: Number,
-    height: Number,
+    expandWidth: Number,
+    expandHeight: Number,
     editor: Object
   },
 
@@ -56,6 +58,16 @@ Polymer({
       if (!this.visible) {
         root.style.display = '';
         this.visible = true;
+        if (this.expandWidth || this.expandHeight) {
+          const s = ThisWindow.getSize();
+          if (this.expandWidth) {
+            s[0] += this.expandWidth;
+          }
+          if (this.expandHeight) {
+            s[1] += this.expandHeight;
+          }
+          ThisWindow.setSize(s[0], s[1]);
+        }
       }
       root.innerHTML = marked(contents);
     } else {
@@ -63,6 +75,16 @@ Polymer({
         root.style.display = 'none';
         this.visible = false;
         root.textContent = '';
+        if (this.expandWidth || this.expandHeight) {
+          const s = ThisWindow.getSize();
+          if (this.expandWidth) {
+            s[0] -= this.expandWidth;
+          }
+          if (this.expandHeight) {
+            s[1] -= this.expandHeight;
+          }
+          ThisWindow.setSize(s[0], s[1]);
+        }
       }
     }
     this.editor.screen.checkShouldResize();
@@ -92,12 +114,6 @@ Polymer({
     const root = document.getElementById('markdown-root');
     root.style.display = 'none';
     this.visible = false;
-    if (this.width) {
-      root.style.width = this.width + 'px';
-    }
-    if (this.height) {
-      root.style.height = this.height + 'px';
-    }
 
     const c = this.editor.getClient();
     this.notification_listener = c.on('notification', (method, args) => {
