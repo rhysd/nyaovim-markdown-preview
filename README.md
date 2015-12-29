@@ -2,7 +2,7 @@ Live Markdown Preview in [NyaoVim](https://github.com/rhysd/NyaoVim)
 ====================================================================
 
 This is a UI plugin to provide live markdown preview UI for [NyaoVim](https://github.com/rhysd/NyaoVim).
-Preview is automatically opened on `markdown` filetype and updated on `TextChanged` or `TextChangedI` event.  [marked]() converts current buffer to HTML and [highlight.js]() adds syntax highlight to code block.
+Preview is automatically opened/closed on `markdown` filetype and updated in real-time.  [marked](https://github.com/chjj/marked) converts current buffer to HTML and [highlight.js](https://github.com/isagalaev/highlight.js/) adds syntax highlight to code block.
 
 ## Installation
 
@@ -36,7 +36,10 @@ Note that this is just an example.  You can put this component as you like.  But
 ## How to Start Preview
 
 If you set `g:markdown_preview_auto` (defualt: `1`) to `1`, this plugin automatically starts preview on `markdown` filetype.  Or you can start markdown preview by `:StartMarkdownPreview` commands.
-You can stop and dismiss markdown preview by `:StopMarkdownPreview` command.  If you set `g:markdown_preview_auto` to `1`, it also stops automatically when the markdown document buffer gets hidden or is unloaded.
+
+The preview is updated on `TextChanged` by default.  If you want to update more frequently, you can set `g:markdown_preview_eager` to `1`.  If it is set to `1`, the preview is also updated on `TextChangedI`.
+
+If you set `g:markdown_preview_auto` to `1`, it also stops automatically when the markdown document buffer gets hidden or is unloaded.  Or you can stop and dismiss markdown preview by `:StopMarkdownPreview` command manually.  
 
 ## Mappings
 

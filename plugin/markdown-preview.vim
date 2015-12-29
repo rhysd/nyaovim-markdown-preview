@@ -8,6 +8,7 @@ augroup END
 
 let g:markdown_preview_auto = get(g:, 'markdown_preview_auto', 1)
 let g:markdown_preview_no_default_mapping = get(g:, 'markdown_preview_no_default_mapping', 0)
+let g:markdown_preview_eager = get(g:, 'markdown_preview_eager', 0)
 
 nnoremap <silent><Plug>(markdown-preview-scroll-up) :<C-u>call markdown_preview#scroll('up')<CR>
 nnoremap <silent><Plug>(markdown-preview-scroll-down) :<C-u>call markdown_preview#scroll('down')<CR>
