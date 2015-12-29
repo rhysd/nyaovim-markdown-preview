@@ -106,10 +106,6 @@ Polymer({
           this._updateContents(args[0]);
           break;
         }
-        case 'markdown-preview:dismiss': {
-          this._updateContents('');
-          break;
-        }
         case 'markdown-preview:scroll': {
           console.log( 'markdown-preview:scroll', args[0]);
           this._scroll(args[0]);
@@ -120,7 +116,6 @@ Polymer({
       }
     });
     c.subscribe('markdown-preview:update');
-    c.subscribe('markdown-preview:dismiss');
     c.subscribe('markdown-preview:scroll');
   },
 
@@ -128,7 +123,6 @@ Polymer({
     const c = this.editor.getClient();
     c.removeListener('notification', this.listener);
     c.unsubscribe('markdown-preview:update');
-    c.unsubscribe('markdown-preview:dismiss');
     c.unsubscribe('markdown-preview:scroll');
   }
 });
