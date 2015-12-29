@@ -2,32 +2,13 @@
   "name": "nyaovim-markdown-preview",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dep": "npm install",
-    "build": "$(npm bin)/browserify -t babelify -o index.js src/index.jsx",
-    "build-production": "NODE_ENV=production $(npm bin)/browserify -t babelify -g uglifyify -o index.js src/index.jsx"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
-    "babelify": "^7.2.0",
-    "browserify": "^12.0.1",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "uglifyify": "^3.0.1"
-  },
   "dependencies": {
-    "github-markdown-css": "^2.1.1",
     "highlightjs": "^8.7.0",
     "marked": "^0.3.5"
   },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
-  }
+  "devDependencies": {},
+  "scripts": {
+  },
+  "author": "",
+  "license": "MIT"
 }

@@ -1,6 +1,8 @@
+<script src="./node_modules/highlightjs/highlight.pack.min.js"></script>
+<script src="./node_modules/marked/marked.min.js"></script>
+
 <dom-module id="markdown-preview">
   <template>
-    <base></base>
     <link rel="stylesheet" href="./node_modules/github-markdown-css/github-markdown.css" />
     <link rel="stylesheet" href="./node_modules/highlightjs/styles/github.css" />
     <style>
@@ -20,10 +22,67 @@
       }
     </style>
 
-    <div id="markdown-root">
+    <div id="markdown-root" class="markdown-body">
     </div>
   </template>
 </dom-module>
 
-<script src="./index.js"></script>
+<script>
+(function(){ 'use strict';
+
+marked.setOptions({
+  highlight: function(code, lang) {
+    if (lang === undefined) {
+      return code;
+    }
+    try {
+      return hljs.highlight(lang, code).value;
+    } catch (e) {
+      return code;
+    }
+  }
+});
+
+Polymer({
+  is: 'markdown-preview',
+
+  properties: {
+    contents: String,
+    width: Number,
+    editor: Object
+  },
+
+  ready: function() {
+    const c = this.editor.getClient();
+    const root = document.getElementById('markdown-root');
+    this.notification_listener = c.on('notification', (method, args) => {
+      switch (method) {
+        case 'markdown-preview:update': {
+          root.innerHTML = marked(args[0]);
+          this.editor.screen.checkShouldResize();
+          break;
+        }
+        case 'markdown-preview:dismiss': {
+          root.textContent = '';
+          this.editor.screen.checkShouldResize();
+          break;
+        }
+        default:
+          break;
+      }
+    });
+    c.subscribe('markdown-preview:update');
+    c.subscribe('markdown-preview:dismiss');
+  },
+
+  detached: function() {
+    const c = this.editor.getClient();
+    c.removeListener('notification', this.listener);
+    c.unsubscribe('markdown-preview:update');
+    c.unsubscribe('markdown-preview:dismiss');
+  }
+});
+
+})();
+</script>
 
