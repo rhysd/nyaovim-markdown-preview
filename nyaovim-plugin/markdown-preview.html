@@ -25,7 +25,6 @@
     </div>
   </template>
 </dom-module>
-
 <script>
 (function(){ 'use strict';
 
@@ -69,6 +68,26 @@ Polymer({
     this.editor.screen.checkShouldResize();
   },
 
+  _scroll: function(direction) {
+    const scroller = document.getElementById('markdown-root').parentElement;
+    switch (direction) {
+      case 'up':
+        scroller.scrollTop -= 16 * 3;  // Font height * 3
+        break;
+      case 'down':
+        scroller.scrollTop += 16 * 3;  // Font height * 3
+        break;
+      case 'top':
+        scroller.scrollTop = 0;
+        break;
+      case 'bottom':
+        scroller.scrollTop = p.scrollHeight;
+        break;
+      default:
+        break;
+    }
+  },
+
   ready: function() {
     const root = document.getElementById('markdown-root');
     root.style.display = 'none';
@@ -91,12 +110,18 @@ Polymer({
           this._updateContents('');
           break;
         }
+        case 'markdown-preview:scroll': {
+          console.log( 'markdown-preview:scroll', args[0]);
+          this._scroll(args[0]);
+          break;
+        }
         default:
           break;
       }
     });
     c.subscribe('markdown-preview:update');
     c.subscribe('markdown-preview:dismiss');
+    c.subscribe('markdown-preview:scroll');
   },
 
   detached: function() {
@@ -104,6 +129,7 @@ Polymer({
     c.removeListener('notification', this.listener);
     c.unsubscribe('markdown-preview:update');
     c.unsubscribe('markdown-preview:dismiss');
+    c.unsubscribe('markdown-preview:scroll');
   }
 });
 
