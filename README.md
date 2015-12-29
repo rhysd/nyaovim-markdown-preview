@@ -60,10 +60,17 @@ Scroll markdown preview to bottom of window.
 
 ## `<markdown-preview>` Properties
 
-TODO
+| Name | Description | Default |
+| ---- | ----------- | ------- |
+| `expand-width` (`Number`) | Expanding width of window on starting preview. (**optional**) | `undefined` |
+| `expand-height` (`Number`) | Expanding height of window on starting preview. (**optional**)| `undefined` |
+| `editor` (`Object`) | [Editor instance](https://github.com/rhysd/neovim-component#neovim-editor-apis) of `<neovim-editor`> component (**required**) | `undefined` |
 
 ## License
 
+Under MIT license.
+
+```
 Copyright (c) 2015 rhysd
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -82,5 +89,5 @@ PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS 
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-<`0`>
+```
 
