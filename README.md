@@ -35,8 +35,8 @@ Note that this is just an example.  You can put this component as you like.  But
 
 ## How to Start Preview
 
-If you set `g:markdown_preview_auto_start` (defualt: `1`) to `1`, this plugin automatically starts preview on `markdown` filetype.  Or you can start markdown preview by `:StartMarkdownPreview` commands.
-You can stop and dismiss markdown preview by `:StopMarkdownPreview` command.
+If you set `g:markdown_preview_auto` (defualt: `1`) to `1`, this plugin automatically starts preview on `markdown` filetype.  Or you can start markdown preview by `:StartMarkdownPreview` commands.
+You can stop and dismiss markdown preview by `:StopMarkdownPreview` command.  If you set `g:markdown_preview_auto` to `1`, it also stops automatically when the markdown document buffer gets hidden or is unloaded.
 
 ## Mappings
 

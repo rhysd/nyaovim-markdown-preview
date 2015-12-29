@@ -6,7 +6,7 @@ augroup plugin-markdown-preview
     autocmd!
 augroup END
 
-let g:markdown_preview_auto_start = get(g:, 'markdown_preview_auto_start', 1)
+let g:markdown_preview_auto = get(g:, 'markdown_preview_auto', 1)
 let g:markdown_preview_no_default_mapping = get(g:, 'markdown_preview_no_default_mapping', 0)
 
 nnoremap <silent><Plug>(markdown-preview-scroll-up) :<C-u>call markdown_preview#scroll('up')<CR>

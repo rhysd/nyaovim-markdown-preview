@@ -2,7 +2,7 @@ if !get(g:, 'loaded_markdown_preview', 0) || !exists('g:nyaovim_version')
     finish
 endif
 
-if g:markdown_preview_auto_start
+if g:markdown_preview_auto
     call markdown_preview#start()
 endif
 
