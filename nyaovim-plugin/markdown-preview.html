@@ -1,10 +1,12 @@
 <script src="./node_modules/highlightjs/highlight.pack.min.js"></script>
 <script src="./node_modules/marked/marked.min.js"></script>
+<script src="./node_modules/mermaid/dist/mermaidAPI.min.js"></script>
 
 <dom-module id="markdown-preview">
   <template>
     <link rel="stylesheet" href="./node_modules/github-markdown-css/github-markdown.css" />
     <link rel="stylesheet" href="./node_modules/highlightjs/styles/github.css" />
+    <link rel="stylesheet" href="./node_modules/mermaid/dist/mermaid.css" />
     <style>
       :host {
         width: auto;
@@ -28,11 +30,18 @@
 <script>
 (function(){ 'use strict';
 
+mermaidAPI.initialize({
+  startOnLoad:false
+});
+
 marked.setOptions({
   highlight: function(code, lang) {
     if (lang === undefined) {
       return code;
+    } else if (lang === "mermaid") {
+      return mermaidAPI.render(code);
     }
+
     try {
       return hljs.highlight(lang, code).value;
     } catch (e) {
