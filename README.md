@@ -37,7 +37,7 @@ Note that this is just an example.  You can put this component as you like.  But
 
 ## How to Start Preview
 
-If you set `g:markdown_preview_auto` (defualt: `1`) to `1`, this plugin automatically starts preview on `markdown` filetype.  Or you can start markdown preview by `:StartMarkdownPreview` commands.
+If you set `g:markdown_preview_auto` (default: `1`) to `1`, this plugin automatically starts preview on `markdown` filetype.  Or you can start markdown preview by `:StartMarkdownPreview` commands.
 
 The preview is updated on `TextChanged` by default.  If you want to update more frequently, you can set `g:markdown_preview_eager` to `1`.  If it is set to `1`, the preview is also updated on `TextChangedI`.
 
