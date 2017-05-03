@@ -27,7 +27,7 @@ Then put `<markdown-preview>` component to your `~/.config/nyaovim/nyaovimrc.htm
 </style>
 
 <div class="horizontal">
-  <neovim-editor id="nyaovim-editor" argv$="[[argv]]"></neovim-editor>
+  <neovim-editor id="nyaovim-editor" argv="[[argv]]"></neovim-editor>
   <!-- Put component -->
   <markdown-preview editor="[[editor]]"></markdown-preview>
 </div>
