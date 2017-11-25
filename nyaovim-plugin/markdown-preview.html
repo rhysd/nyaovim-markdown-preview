@@ -2,11 +2,12 @@
 <script src="./node_modules/mermaid/dist/mermaidAPI.min.js"></script>
 <script src="./node_modules/marked/marked.min.js"></script>
 
+  <link rel="stylesheet" href="./node_modules/github-markdown-css/github-markdown.css" />
+  <link rel="stylesheet" href="./node_modules/highlightjs/styles/github.css" />
+  <link rel="stylesheet" href="./node_modules/mermaid/dist/mermaid.css" />
+
 <dom-module id="markdown-preview">
   <template>
-    <link rel="stylesheet" href="./node_modules/github-markdown-css/github-markdown.css" />
-    <link rel="stylesheet" href="./node_modules/highlightjs/styles/github.css" />
-    <link rel="stylesheet" href="./node_modules/mermaid/dist/mermaid.css" />
     <style>
       :host {
         width: auto;
@@ -63,7 +64,8 @@ Polymer({
   },
 
   _updateContents: function(contents) {
-    const root = document.getElementById('markdown-root')
+    console.log('UOOOOO!', this, this.$);
+    const root = this.$['markdown-root'];
     if (contents) {
       if (!this.visible) {
         root.style.display = '';
@@ -101,7 +103,7 @@ Polymer({
   },
 
   _scroll: function(direction) {
-    const scroller = document.getElementById('markdown-root').parentElement;
+    const scroller = this.$['markdown-root'].parentElement;
     switch (direction) {
       case 'up':
         scroller.scrollTop -= 16 * 3;  // Font height * 3
@@ -121,7 +123,7 @@ Polymer({
   },
 
   ready: function() {
-    const root = document.getElementById('markdown-root');
+    const root = this.$['markdown-root'];
     root.style.display = 'none';
     this.visible = false;
 
